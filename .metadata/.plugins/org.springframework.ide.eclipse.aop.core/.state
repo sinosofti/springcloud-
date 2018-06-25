@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="service-feign"/>
+<aop-project name="service-user"/>
+<aop-project name="config-server"/>
+<aop-project name="eureka-server"/>
+<aop-project name="service-feign-hystrix"/>
+<aop-project name="service-movie"/>
+<aop-project name="springmvc-demo"/>
+<aop-project name="config-client"/>
+<aop-project name="service-lucyturbine">
+<aspect-definition advice-class-name="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect" advice-method-name="methodsAnnotatedWithHystrixCommand(org.aspectj.lang.ProceedingJoinPoint)" advice-type="AROUND" aspect-end-line-number="-1" aspect-name="hystrixCommandAspect" aspect-start-line-number="-1" factory-id="org.springframework.ide.eclipse.aop.core.annotationAspectDefinitionElementFactory" file="/service-lucyturbine/src/main/java/com/forezp/ServiceLucyApplication.java" pointcut-expression="hystrixCommandAnnotationPointcut() || hystrixCollapserAnnotationPointcut()" proxy-target-class="false">
+<aop-reference advice-type="AROUND" bean="1:BeansModel|2:service-lucyturbine|3:java:com.forezp.ServiceLucyApplication|8:serviceLucyApplication:19" bean-file="/service-lucyturbine/src/main/java/com/forezp/ServiceLucyApplication.java" bean-start-line="19" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/service-lucyturbine/src/main/java/com/forezp/ServiceLucyApplication.java" source="=service-hiturbine/D:\/maven-whjk-repository\/com\/netflix\/hystrix\/hystrix-javanica\/1.5.10\/hystrix-javanica-1.5.10.jar&lt;com.netflix.hystrix.contrib.javanica.aop.aspectj(HystrixCommandAspect.class[HystrixCommandAspect~methodsAnnotatedWithHystrixCommand~Lorg.aspectj.lang.ProceedingJoinPoint;" source-start-line="-1" target="=service-lucyturbine/src\/main\/java&lt;com.forezp{ServiceLucyApplication.java[ServiceLucyApplication~home~QString;" target-start-line="29"/>
+</aspect-definition>
+</aop-project>
+<aop-project name="service-hi"/>
+<aop-project name="service-miya"/>
+<aop-project name="service-turbine"/>
+<aop-project name="server-zipkin"/>
+<aop-project name="service-hiturbine">
+<aspect-definition advice-class-name="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect" advice-method-name="methodsAnnotatedWithHystrixCommand(org.aspectj.lang.ProceedingJoinPoint)" advice-type="AROUND" aspect-end-line-number="-1" aspect-name="hystrixCommandAspect" aspect-start-line-number="-1" factory-id="org.springframework.ide.eclipse.aop.core.annotationAspectDefinitionElementFactory" file="/service-hiturbine/src/main/java/com/forezp/ServiceHiApplication.java" pointcut-expression="hystrixCommandAnnotationPointcut() || hystrixCollapserAnnotationPointcut()" proxy-target-class="false">
+<aop-reference advice-type="AROUND" bean="1:BeansModel|2:service-hiturbine|3:java:com.forezp.ServiceHiApplication|8:serviceHiApplication:19" bean-file="/service-hiturbine/src/main/java/com/forezp/ServiceHiApplication.java" bean-start-line="19" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/service-hiturbine/src/main/java/com/forezp/ServiceHiApplication.java" source="=service-hiturbine/D:\/maven-whjk-repository\/com\/netflix\/hystrix\/hystrix-javanica\/1.5.10\/hystrix-javanica-1.5.10.jar&lt;com.netflix.hystrix.contrib.javanica.aop.aspectj(HystrixCommandAspect.class[HystrixCommandAspect~methodsAnnotatedWithHystrixCommand~Lorg.aspectj.lang.ProceedingJoinPoint;" source-start-line="-1" target="=service-hiturbine/src\/main\/java&lt;com.forezp{ServiceHiApplication.java[ServiceHiApplication~home~QString;" target-start-line="29"/>
+</aspect-definition>
+</aop-project>
+<aop-project name="service-zuul"/>
+<aop-project name="eureka-server-h2"/>
+</aop-reference-model>

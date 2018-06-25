@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+externalMigrateFromAuthorizationDatabase/isMigrated=true
+migrateFromAuthorizationDatabase/isMigrated=true
+repositories/804147cd6f700018111fb4741d36d6c0=804147cd6f700018111fb4741d36d6c0;http\://192.168.100.88\:81/svn/CORPORATEFRAMEWORK/IDBFC;http\://192.168.100.88\:81/svn/CORPORATEFRAMEWORK/IDBFC;branches;tags;trunk;true;;;;false;;;0

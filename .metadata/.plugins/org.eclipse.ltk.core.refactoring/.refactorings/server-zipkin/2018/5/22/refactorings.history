@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;server-zipkin/port 8881.log&apos; to &apos;port 9411.log&apos;" description="Rename resource &apos;port 8881.log&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="port 8881.log" name="port 9411.log" stamp="1527662296359" updateReferences="true"/>
+</session>

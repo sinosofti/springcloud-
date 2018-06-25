@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;service-zuul/port 8150.log&apos; to &apos;port 8769.log&apos;" description="Rename resource &apos;port 8150.log&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="port 8150.log" name="port 8769.log" stamp="1527585214434" updateReferences="true"/>
+</session>

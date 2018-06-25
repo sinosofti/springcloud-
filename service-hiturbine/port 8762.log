@@ -1,0 +1,29 @@
+﻿
+
+Hystrix Dashboard的使用
+/****************************************************************************************
+1、改造service-hi 在 pom的工程文件引入相应的依赖
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+        </dependency>
+        
+ 2、在程序的入口ServiceHiApplication类，加上@EnableHystrix注解开启断路器，这个是必须的，并且需要在程序中声明断路点HystrixCommand；加上@EnableHystrixDashboard注解，开启HystrixDashboard
+ 3、启动eureka-server 模块服务，启动1个端口；
+ 4、启动 service-hiturbine 模块服务，启动1个端口；
+ 6、在浏览器输入地址 http://localhost:8762/hystrix.stream 可以看到有数据打印出来，表明正常情况下一切正常；
+   ****注意：若果输入http://localhost:8762/hystrix.stream一直ping:ping:ping:ping:ping:ping:ping:ping:ping: 无返回值
+   		则需要调用一次hi方法  例如http://localhost:8762/hi?name=nihao
+ 7、在浏览器输入 locahost:8762/hystrix 在页面输入localhost:8762/hystrix.stream 、2000 、miya 点击monitor Stream
+ 8、请求http://localhost:8762/hi?name=nihao查看界面图形化数据的变化
+
+ ****************************************************************************************/

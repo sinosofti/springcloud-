@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;service-feign/port 7910.log&apos; to &apos;port 8765.log&apos;" description="Rename resource &apos;port 7910.log&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="port 7910.log" name="port 8765.log" stamp="1528079106463" updateReferences="true"/>
+</session>

@@ -1,0 +1,97 @@
+﻿
+/****************************************************************************************
+ * http请求地址和资源文件映射如下:
+ *
+ * /{application}/{profile}[/{label}]
+ * /{application}-{profile}.yml
+ * /{label}/{application}-{profile}.yml
+ * /{application}-{profile}.properties
+ * /{label}/{application}-{profile}.properties
+ ****************************************************************************************/
+ /****************************************************************************************
+ 一、高可用配置中心启动顺序：使用bus刷新配置文件
+
+ 1、config-client 端 注解：@EnableEurekaClient //高可用    @RefreshScope //高可用
+ 2、启动 eureka-server 模块服务，启动1个端口；
+ 3、启动 config-server 模块服务，启动1个端口；
+ 4、启动 config-client 模块服务，启动2个端口；
+ 5、在浏览器输入地址http://localhost:8881/hi 可以看到信息成功的被打印出来.；
+ 6、修改git上得配置文件，输入地址http://localhost:8881/bus/refresh 
+          ☆☆☆☆ （2.0版本以下不支持不支持get请求）另外，
+    /bus/refresh接口可以指定服务，即使用”destination”参数，比如 “/bus/refresh?destination=customers:**即刷新服务名为customers的所有服务，不管ip。
+ 7、在浏览器输入地址http://localhost:8881/hi 可以看到配置文件内容已经修改；
+
+ ****************************************************************************************/
+  二、高可用集群配置中心启动顺序：使用bus刷新配置文件
+   	改造config-server在其pom.xml文件加上EurekaClient的起步依赖spring-cloud-starter-eureka，代码如下:
+ 	<dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+    </dependencies>
+ 2、改造config-client将其注册微到服务注册中心，作为Eureka客户端，需要pom文件加上起步依赖spring-cloud-starter-eureka，代码如
+ 	<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+3、依次启动 eureka-server,config-server,config-client    
+4、访问http://localhost:8881/hi     
+ #####################################################################################################
+三、使用 Spring Cloud Bus
+ 1、改造config-client在pom文件加上起步依赖spring-cloud-starter-bus-amqp 在配置文件application.properties中加上RabbitMq的配置
+ 2、依次启动eureka-server、config-server,启动两个config-client，端口为：8881、8882。
+ 3、访问http://localhost:8881/hi 或者http://localhost:8882/hi 
+ 4、这时我们去代码仓库将foo，即改变配置文件foo的值。如果是传统的做法，需要重启服务，才能达到配置文件的更新。此时，我们只需要发送post请求：http://localhost:8881/bus/refresh，你会发现config-client会重新读取配置文件
+	    ☆☆☆☆ （2.0版本以下不支持不支持get请求）另外，
+    /bus/refresh接口可以指定服务，即使用”destination”参数，比如 “/bus/refresh?destination=customers:**即刷新服务名为customers的所有服务，不管ip。
+ 5、再次访问http://localhost:8881/hi 或者http://localhost:8882/hi   
+ #####################################################################################################
+ 
+# rabbitmq 配置：
+  rabbitmq:
+    host: localhost   # 登录 Rabbitmq 后台管理页面地址为：http://localhost:15672
+    port: 5672
+    username: guest   # 默认账户
+    password: guest   # 默认密码
+#####################################################################################################
+
+/****************************************************************************************
+ Rabbitmq 安装步骤（进入 Rabbitmq 官网：http://www.rabbitmq.com）：
+
+ 1、下载 rabbitmq-server-3.6.11.exe、otp_win64_20.0-rc2.exe 两个 windows 安装软件；
+ 2、双击安装 otp_win64_20.0-rc2.exe；
+ 3、双击安装 rabbitmq-server-3.6.11.exe；
+ 4、两个都安装完后会发现服务中多了一个 Rabbitmq 的服务，服务名称为：RabbitMQ；
+ 5、如果想查看管理界面的话，执行命令：rabbitmq-plugins enable rabbitmq_management，然后重启 RabbitMQ 服务；
+ 6、通过windows命令 netstat -aon|findstr "5672" 查看该端口是否被占用，占用的话，说明安装基本上一切正常；
+ 7、通过 http://localhost:15672 地址可以进入服务端的管理页面；
+
+ 总结：到此为止，Rabbitmq 已经安装完成，接下来准备接入 SpringCloud 生态圈。
+ ****************************************************************************************/

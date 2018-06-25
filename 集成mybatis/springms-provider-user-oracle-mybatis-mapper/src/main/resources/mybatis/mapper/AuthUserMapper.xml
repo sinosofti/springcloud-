@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springms.cloud.mapper.AuthUserMapper">
+	<resultMap id="BaseResultMap" type="AuthUser">
+		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="USERNAME" jdbcType="VARCHAR" property="username" />
+		<result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+		<result column="EMAIL" jdbcType="VARCHAR"  property="email" />
+		<result column="ROLEID" jdbcType="VARCHAR"  property="roleid" />
+		<result column="USEABLE" jdbcType="VARCHAR"  property="useable" />
+		<result column="ADDTIME" jdbcType="TIMESTAMP" property="addtime" />
+		<result column="LOGINTIME" jdbcType="TIMESTAMP" property="logintime" />
+		<result column="LOGINIP" jdbcType="VARCHAR" property="loginip" />
+	</resultMap>
+
+	<insert id="addAdmin" useGeneratedKeys="true" keyProperty="id">
+		insert into auth_user(username, password, roleid, addtime)
+		values(#{username}, #{password}, #{roleid}, now())
+	</insert>
+
+	<select id="queryByUsername" resultMap="BaseResultMap">
+		select
+		u.id, u.username,
+		u.password, u.email ,u.useable, u.loginip,
+		to_char(u.logintime,
+		'yyyy-mm-dd hh24:mi:ss') logintime,
+		to_char(u.addtime, 'yyyy-mm-dd
+		hh24:mi:ss') addtime
+		from auth_user u
+		where u.username = #{username}
+	</select>
+	<select id="queryList"  resultMap="BaseResultMap">
+		select
+		u.id, u.username, u.email ,u.useable, u.loginip,
+		to_char(u.logintime,'yyyy-mm-dd hh24:mi:ss') logintime,
+		to_char(u.addtime, 'yyyy-mm-dd hh24:mi:ss') addtime
+		from auth_user u
+		order by u.addtime desc
+	</select>
+
+	<select id="queryRoleUids" resultType="int">
+		select u.id from auth_user
+		u where u.roleid = #{roleid}
+	</select>
+
+	<update id="bindUser">
+		update auth_user set roleid = #{roleid} where id =
+		#{id}
+	</update>
+</mapper>

@@ -1,0 +1,20 @@
+﻿
+ /****************************************************************************************
+ 一、服务追踪组件zipkin，Spring Cloud Sleuth集成了zipkin组件。
+ 1、引入依赖<dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-server</artifactId>
+        </dependency>  
+   	在其程序入口类, 加上注解@EnableZipkinServer，开启ZipkinServer的功能    
+ 2、启动 server-zipkin 模块服务，启动1个端口；
+ 3、启动 service-hi  此服务添加pom依赖为      
+ 		<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>模块服务，启动1个端口；
+ 4、启动 service-miya 模块服务，启动1个端口；
+ 5、在浏览器输入地址http://localhost:8988/hi ，http://localhost:8989/miya 可以看到信息成功的被打印出来.；
+ 		（***必须相互调用才会有追踪信息对）
+ 5、在浏览器输入地址http://localhost:9411/ 再点击Dependencies,可以发现服务的依赖关系，点击find traces,可以看到具体服务相互调用的数据：
+ ****************************************************************************************/
+ 

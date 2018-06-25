@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\testWorkspaces2\SpringMVC-Demo-master"/>
+			<item value="D:\testWorkspaces2\HNUST"/>
+			<item value="D:\testWorkspaces2\TestSpringMVC"/>
+			<item value="D:\testWorkspaces2\test-springmvc"/>
+			<item value="D:\testWorkspaces2\config-busclient"/>
+			<item value="D:\testWorkspaces2\config-busserver"/>
+			<item value="D:\testWorkspaces2\eureka-busserver"/>
+			<item value="D:\testWorkspaces2\config-server"/>
+			<item value="D:\testWorkspaces2\config-client"/>
+			<item value="D:\testWorkspaces2\service-zuul"/>
+			<item value="D:\testWorkspaces2\service-hi"/>
+			<item value="D:\testWorkspaces2\service-feign-hix"/>
+			<item value="D:\testWorkspaces2\service-feign-hystrix"/>
+			<item value="D:\testWorkspaces2\eureka-server-h2"/>
+			<item value="D:\testWorkspaces2\service-movie"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+</section>
